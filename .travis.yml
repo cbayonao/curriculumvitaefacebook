@@ -1,21 +1,21 @@
 language: node_js
 cache:
   directories:
-    - ~!@/.npm
-node_js
+    - ~/.npm
+node_js:
   - '9'
 git:
   depth: 3
 script:
   - yarn build
-  - echo 'url-personalizada.com' > public/CNAME
+  - echo 'curriculumvitae' > public/CNAME
 deploy:
-  provider: //firebase//
+  provider: pages
   skip-cleanup: true
   keep-history: true
   github-token: $GITHUB_TOKEN
   local-dir: dist/
   target-branch: master
-  commit-message: "Deploy release ${TRAVIS_TAG}"
+  commit_message: "Deploy release ${TRAVIS_TAG}"
   on:
     branch: develop
